@@ -30,6 +30,14 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "employeeNumber", nullable = false, unique = true)
+    private String employeeNumber;
+
+    @Column(name = "employeePosition", nullable = false)
+    private String employeePosition;
+
+    @Column(name = "organizationUnit", nullable = false)
+    private String organizationUnit;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
