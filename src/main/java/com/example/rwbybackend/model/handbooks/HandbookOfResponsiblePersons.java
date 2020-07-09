@@ -1,6 +1,6 @@
 package com.example.rwbybackend.model.handbooks;
 
-public class handbookOfResponsiblePersons {
+public class HandbookOfResponsiblePersons {
     private String surnameNumber;
     private String fullName;
     private String position;

@@ -1,7 +1,7 @@
 package com.example.rwbybackend.controllers;
 
-import com.example.rwbybackend.model.User;
-import com.example.rwbybackend.services.UserServiceImpl;
+import com.example.rwbybackend.model.users.UserAccount;
+import com.example.rwbybackend.services.UserAccountServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +15,17 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private final UserServiceImpl userServiceImpl;
+    private final UserAccountServiceImpl userServiceImpl;
 
 
     @GetMapping(value = "/getById", produces = "application/json")
-    public Optional<User> getUserById(@RequestParam("id") long id) {
+    public Optional<UserAccount> getUserById(@RequestParam("id") long id) {
         return userServiceImpl.getUserById(id);
 
     }
 
     @GetMapping(value = "/getAll", produces = "application/json")
-    public List<User> getAllUsers() {
+    public List<UserAccount> getAllUsers() {
         return userServiceImpl.getAllUsers();
 
     }

@@ -1,4 +1,4 @@
 package com.example.rwbybackend.model.handbooks;
 
-public class handbookOfDefects {
+public class HandbookOfDefects {
 }
