@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,9 +26,9 @@ public class AuthenticationController {
 	private final UserService userService;
 
 	@PostMapping("/login")
-	public ResponseEntity<StringData> login(@Valid LoginForm form) {
+	public ResponseEntity<StringData> login(@RequestBody @Valid LoginForm form) {
 
-		log.info("login");
+		log.info("login {}", form.getUsername());
 
 		StringData token = userService.login(form.getUsername(), form.getPassword());
 

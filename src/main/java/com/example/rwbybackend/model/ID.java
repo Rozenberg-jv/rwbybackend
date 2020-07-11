@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class ID {
 
 	@Id
-	@GeneratedValue()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", columnDefinition = "BIGINT")
 	@Access(AccessType.PROPERTY)
 	private Long id;

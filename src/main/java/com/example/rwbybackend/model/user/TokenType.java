@@ -4,9 +4,9 @@ import lombok.Getter;
 
 public enum TokenType {
 
-	HARD(60),
-	SOFT(30),
-	PASSWORD_RESET(120);
+	HARD(6000),
+	SOFT(3000),
+	PASSWORD_RESET(12000);
 
 	TokenType(int expiresMinute) {
 

@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.Collections;
 
 public class TokenBasedAuthenticationProvider implements AuthenticationProvider {
@@ -36,7 +37,7 @@ public class TokenBasedAuthenticationProvider implements AuthenticationProvider 
 					(String) authenticationToken.getPrincipal(),
 					tokenAuthority.getHardToken(), TokenType.HARD);
 		}
-
+		System.out.println(LocalDateTime.now());
 		if (validToken == null && tokenAuthority.getSoftToken() != null) {
 			validToken = userTokenService.findValidUserTokenByUsernameTypeAndToken(
 					(String) authenticationToken.getPrincipal(),
@@ -44,7 +45,7 @@ public class TokenBasedAuthenticationProvider implements AuthenticationProvider 
 		}
 
 		if (validToken != null) {
-			GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + validToken.getUser().getRole());
+			GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + validToken.getUser().getRole().getRole());
 
 			return new PreAuthenticatedAuthenticationToken(validToken.getUser(), validToken, Collections.singleton(authority));
 		}

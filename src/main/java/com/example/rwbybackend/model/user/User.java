@@ -16,7 +16,7 @@ import java.util.List;
 import static org.springframework.util.StringUtils.isEmpty;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

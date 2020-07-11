@@ -4,14 +4,14 @@ import com.example.rwbybackend.model.ID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "roles")
 @Data
+@ToString(callSuper = true, of = {"role"})
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Role extends ID {

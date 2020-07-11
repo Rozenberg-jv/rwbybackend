@@ -1,16 +1,20 @@
 package com.example.rwbybackend.controllers.forms;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
+@RequiredArgsConstructor
+@Builder
 public class LoginForm {
 
 	@NotNull
-	private String username;
+	private final String username;
 
 	@NotNull
-	private String password;
+	private final String password;
 
 }

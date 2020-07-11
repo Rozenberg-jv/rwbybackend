@@ -1,19 +1,18 @@
 package com.example.rwbybackend.model.user;
 
 import com.example.rwbybackend.services.util.TokenGenerator;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "user_tokens")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(of = {"token", "type", "expires"})
 @Builder
 public class UserToken {
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserTokenRepository extends JpaRepository<UserToken, String> {
 
-	@Query("select t from UserToken t where t.user.username = :username and t.token = :token and t.type = :type and t.expires > CURRENT_TIMESTAMP()")
+	@Query("select t from UserToken t where t.user.username = :username and t.token = :token and t.type = :type and t.expires > now()")
 	UserToken findByUsernameAndTokenNotExpired(String username, String token, TokenType type);
 
 	List<UserToken> findByUserAndType(User user, TokenType type);
