@@ -15,10 +15,12 @@ public enum RoleName {
 
 
     RoleName(String roleName) {
-
         this.roleName = roleName;
     }
 
     @Getter
     private final String roleName;
 }
+
+
+

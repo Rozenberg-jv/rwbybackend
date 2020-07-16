@@ -16,6 +16,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 public class Role extends ID {
 
+
     @Enumerated(EnumType.STRING)
     @Column
     private RoleName role;

@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Data
 public class ID {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "BIGINT")

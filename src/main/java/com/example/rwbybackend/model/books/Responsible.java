@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "responsible_book")
-public class ResponsibleBook {
+@Table(name = "responsibles")
+public class Responsible {
 
     @Id
-    @Column(name = "responsible_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private long responsibleId;
     @Column(name = "lastname")
     private String lastname;

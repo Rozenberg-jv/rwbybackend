@@ -7,8 +7,6 @@ import lombok.*;
 import org.apache.commons.codec.binary.Hex;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.intellij.lang.annotations.Pattern;
-
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.security.MessageDigest;
@@ -18,7 +16,7 @@ import java.util.List;
 import static org.springframework.util.StringUtils.isEmpty;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
