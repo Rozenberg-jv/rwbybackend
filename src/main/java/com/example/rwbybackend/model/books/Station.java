@@ -10,14 +10,14 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "stations_book")
-public class StationsBook {
+@Table(name = "stations")
+public class Station {
 
     @Id
-    @Column(name = "central_station_id", nullable = false)
-    private long centralStationId;
-    @Column(name = "central_station_title")
-    private String centralStationTitle;
+    @Column(nullable = false)
+    private long id;
+    @Column
+    private String title;
     @Column(name = "main_track")
     private int mainTrack;
     @Column(name = "connecting_track")

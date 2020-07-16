@@ -10,12 +10,12 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "departments_book")
-public class DepartmentsBook {
+@Table(name = "departments")
+public class Department {
 
     @Id
-    @Column(name = "department_id", nullable = false)
-    private long departmentId;
+    @Column(name = "id", nullable = false)
+    private long id;
     @Column(name = "parent_department_id")
     private int parentDepartmentId;
     @Column(name = "department")

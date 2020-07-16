@@ -1,7 +1,7 @@
 package com.example.rwbybackend.model.user;
 
 import com.example.rwbybackend.model.ID;
-import com.example.rwbybackend.model.books.DepartmentsBook;
+import com.example.rwbybackend.model.books.Department;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.apache.commons.codec.binary.Hex;
@@ -26,6 +26,7 @@ public class User extends ID {
 
     @Column
     private String employeeId;
+
     @Column(name = "username")
     private String username;    // email
 
@@ -51,7 +52,7 @@ public class User extends ID {
     @Column
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "department_id")
-    private DepartmentsBook departmentsBookByDepartmentId;
+    private Department departmentsBookByDepartmentId;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_role")

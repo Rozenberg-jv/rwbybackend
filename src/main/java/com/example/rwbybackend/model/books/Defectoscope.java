@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "defectoscope_book")
-public class DefectoscopeBook {
+@Table(name = "defectoscope")
+public class Defectoscope {
     @Id
     @Column(name = "defectoscope_id", nullable = false)
     private long defectoscopeId;
