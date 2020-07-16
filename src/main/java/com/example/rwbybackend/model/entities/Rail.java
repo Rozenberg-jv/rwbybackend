@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -17,10 +14,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
+@Table(name = "rails")
 public class Rail {
     @Id
-    @Column(name = "rail_id", nullable = false)
-    private long railId;
+    @Column(name = "id", nullable = false)
+    private long id;
     @Column(name = "subdivision_number")
     private int subdivisionNumber;
     @Column(name = "track_number")

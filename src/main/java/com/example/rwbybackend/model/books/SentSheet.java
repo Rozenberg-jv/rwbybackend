@@ -4,6 +4,7 @@ import com.example.rwbybackend.model.actions.ControlEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -12,14 +13,15 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString(exclude = "controlEntity")
 @Entity
 @Table(name = "sent_sheet")
 public class SentSheet {
     @Id
-    @Column(name = "sheet_id", nullable = false)
-    private long sheetId;
-    @Column(name = "sent_Date")
-    private LocalDate sentDate;
+    @Column(nullable = false)
+    private long id;
+    @Column
+    private LocalDate date;
     @Column(name = "departure_station")
     private String departureStation;
     @Column(name = "destination_station")
@@ -28,7 +30,7 @@ public class SentSheet {
     private int placeQuantity;
 
     @ManyToOne
-    @JoinColumn(name = "control_id", referencedColumnName = "control_id")
-    private ControlEntity controlEntityByControlId;
+    @JoinColumn(name = "control_id")
+    private ControlEntity controlEntity;
 
 }

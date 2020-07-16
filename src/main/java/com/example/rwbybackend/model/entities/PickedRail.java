@@ -12,11 +12,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "picked_rail")
+@Table(name = "picked_rails")
 public class PickedRail {
     @Id
-    @Column(name = "picked_rail_id", nullable = false)
-    private long pickedRailId;
+    @Column(nullable = false)
+    private long id;
     @Column(name = "out_date")
     private LocalDate outDate;
     @Column(name = "railtrack_number")

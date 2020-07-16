@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -15,16 +12,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
+@Table(name = "detects")
 public class Defect {
     @Id
-    @Column(name = "defect_id", nullable = false)
-    private long defectId;
-    @Column(name = "defect_code")
-    private String defectCode;
-    @Column(name = "defect_deep")
-    private int defectDeep;
-    @Column(name = "defect_length")
-    private int defectLength;
+    @Column(nullable = false)
+    private long id;
+    @Column(name = "code")
+    private String code;
+    @Column(name = "deep")
+    private int deep;
+    @Column(name = "length")
+    private int length;
     @Column(name = "detect_time")
     private LocalDateTime detectTime;
     @Column(name = "notice_number")

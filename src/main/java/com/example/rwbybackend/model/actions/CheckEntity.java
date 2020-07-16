@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @Table(name = "check_entity")
 public class CheckEntity {
     @Id
-    @Column(name = "check_id", nullable = false)
-    private long checkId;
+    @Column(nullable = false)
+    private long id;
     @Column(name = "check_date")
     private LocalDate checkDate;
     @Column(name = "work_region")

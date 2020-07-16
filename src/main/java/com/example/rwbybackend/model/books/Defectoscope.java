@@ -12,13 +12,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "defectoscope")
+@Table(name = "defectoscops")
 public class Defectoscope {
     @Id
-    @Column(name = "defectoscope_id", nullable = false)
-    private long defectoscopeId;
-    @Column(name = "defectoscope_type")
-    private String defectoscopeType;
+    @Column(nullable = false)
+    private long id;
+    @Column
+    private String type;
     @Column(name = "factory_number")
     private String factoryNumber;
     @Column(name = "factory_year")

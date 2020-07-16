@@ -15,10 +15,10 @@ import java.time.LocalDate;
 @Table(name = "schedule_vd")
 public class ScheduleVd {
     @Id
-    @Column(name = "schedule_vd_id", nullable = false)
-    private long scheduleVdId;
-    @Column(name = "checked_date")
-    private LocalDate checkedDate;
+    @Column(nullable = false)
+    private long id;
+    @Column
+    private LocalDate date;
     @Column(name = "track_title")
     private String trackTitle;
     @Column(name = "last_change")

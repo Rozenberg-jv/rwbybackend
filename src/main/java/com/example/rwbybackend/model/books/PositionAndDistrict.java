@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class PositionAndDistrict {
 
     @Id
-    @Column(name = "bind_id", nullable = false)
-    private long bindId;
+    @Column(nullable = false)
+    private long id;
     @Column(name = "position")
     private String position;
     @Column(name = "district_title")

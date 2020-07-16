@@ -15,15 +15,15 @@ import java.time.LocalDate;
 @Table(name = "control_entity")
 public class ControlEntity {
     @Id
-    @Column(name = "control_id", nullable = false)
-    private long controlId;
-    @Column(name = "control_period")
-    private int controlPeriod;
+    @Column(nullable = false)
+    private long id;
+    @Column
+    private int period;
     @Column(name = "registrarion_date")
     private LocalDate registrarionDate;
     @Column(name = "speed")
     private int speed;
-    @Column(name = "control_Date")
-    private LocalDate controlDate;
+    @Column
+    private LocalDate date;
 
 }

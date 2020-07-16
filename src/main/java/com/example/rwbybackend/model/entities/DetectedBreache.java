@@ -12,13 +12,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "detected_breache")
+@Table(name = "detected_breaches")
 public class DetectedBreache {
     @Id
-    @Column(name = "breache_id", nullable = false)
-    private long breacheId;
-    @Column(name = "detect_Date")
-    private LocalDate detectDate;
+    @Column(nullable = false)
+    private long id;
+    @Column
+    private LocalDate date;
     @Column(name = "breache_Type")
     private String breacheType;
 

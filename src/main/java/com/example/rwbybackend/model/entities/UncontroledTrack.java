@@ -3,6 +3,7 @@ package com.example.rwbybackend.model.entities;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -11,12 +12,13 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString(exclude = "rail")
 @Entity
 @Table(name = "uncontroled_track")
 public class UncontroledTrack {
     @Id
-    @Column(name = "uncontroled_track_id", nullable = false)
-    private long uncontroledTrackId;
+    @Column(nullable = false)
+    private long id;
     @Column(name = "passage_date")
     private LocalDate passageDate;
     @Column(name = "lengthKM")
@@ -27,7 +29,7 @@ public class UncontroledTrack {
     private String takenAction;
 
     @ManyToOne
-    @JoinColumn(name = "rail_id", referencedColumnName = "rail_id")
-    private Rail railByRailId;
+    @JoinColumn(name = "rail_id")
+    private Rail rail;
 
 }

@@ -15,8 +15,8 @@ import java.time.LocalDate;
 @Table(name = "rail_particulars")
 public class RailParticulars {
     @Id
-    @Column(name = "particulars_id", nullable = false)
-    private long particularsId;
+    @Column( nullable = false)
+    private long id;
     @Column(name = "packing_date")
     private LocalDate packingDate;
     @Column(name = "packing_fature")

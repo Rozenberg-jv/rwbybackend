@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 @Table(name = "time_tracking")
 public class TimeTracking {
     @Id
-    @Column(name = "time_tracking_id", nullable = false)
-    private long timeTrackingId;
+    @Column(nullable = false)
+    private long id;
     @Column(name = "tracking_date")
     private LocalDate trackingDate;
     @Column(name = "factory_number")

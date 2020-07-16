@@ -20,6 +20,7 @@ import static org.springframework.util.StringUtils.isEmpty;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@ToString(exclude = {"department", "role"})
 public class User extends ID {
 
     @Column
@@ -49,8 +50,8 @@ public class User extends ID {
 
     @Column
     @ManyToOne
-    @JoinColumn(name = "department_id", referencedColumnName = "department_id")
-    private Department departmentsBookByDepartmentId;
+    @JoinColumn(name = "department_id")
+    private Department department;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_role")

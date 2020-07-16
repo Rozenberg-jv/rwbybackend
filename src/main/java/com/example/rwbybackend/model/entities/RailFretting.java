@@ -15,14 +15,14 @@ import java.time.LocalDate;
 @Table(name = "rail_fretting")
 public class RailFretting {
     @Id
-    @Column(name = "fretting_id", nullable = false)
-    private long frettingId;
-    @Column(name = "vertical_fretting")
-    private int verticalFretting;
-    @Column(name = "active_side_fretting")
-    private int activeSideFretting;
-    @Column(name = "inactive_side_fretting")
-    private int inactiveSideFretting;
+    @Column( nullable = false)
+    private long id;
+    @Column
+    private int vertical;
+    @Column(name = "active_side")
+    private int activeSide;
+    @Column(name = "inactive_side")
+    private int inactiveSide;
     @Column(name = "crush_clinch")
     private int crushClinch;
     @Column(name = "ripply_fretting")
