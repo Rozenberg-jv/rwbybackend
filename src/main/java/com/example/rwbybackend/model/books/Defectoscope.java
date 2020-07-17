@@ -12,9 +12,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "defectoscops")
+@Table(name = "defectoscopes_book")
 public class Defectoscope {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private long id;
     @Column
@@ -23,5 +24,9 @@ public class Defectoscope {
     private String factoryNumber;
     @Column(name = "factory_year")
     private LocalDate factoryYear;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "responsible_id")
+    private Responsible responsible;
 
 }

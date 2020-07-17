@@ -10,15 +10,17 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "departments")
+@Table(name = "departments_book")
 public class Department {
 
     @Id
     @Column(name = "id", nullable = false)
     private long id;
     @Column(name = "parent_department_id")
-    private int parentDepartmentId;
+    private int parentId;
     @Column(name = "department")
     private String department;
+    
+    
 
 }

@@ -1,5 +1,6 @@
 package com.example.rwbybackend.model.entities;
 
+import com.example.rwbybackend.model.books.Responsible;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,13 +30,13 @@ public class Rail {
     private int picketNumber;
     @Column(name = "section_namber")
     private int sectionNamber;
-    @Column(name = "slot")
+    @Column
     private String slot;
     @Column(name = "track_part")
     private int trackPart;
     @Column(name = "track_title")
     private String trackTitle;
-    @Column(name = "ferry")
+    @Column
     private String ferry;
     @Column(name = "factory_mark")
     private String factoryMark;
@@ -47,5 +48,14 @@ public class Rail {
     private long railLength;
     @Column(name = "change_date")
     private LocalDateTime changeDate;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "particulars_id")
+    private RailParticulars railParticulars;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "fretting_id")
+    private RailFretting railFretting;
+
 
 }

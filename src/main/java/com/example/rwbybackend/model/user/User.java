@@ -23,8 +23,8 @@ import static org.springframework.util.StringUtils.isEmpty;
 @ToString(exclude = {"department", "role"})
 public class User extends ID {
 
-    @Column
-    private String employeeId;
+    @Column(name = "employee_number")
+    private String employeeNumber;
 
     @Column(name = "username")
     private String username;    // email
@@ -49,7 +49,7 @@ public class User extends ID {
     private String homePhone;
 
     @Column
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "department_id")
     private Department department;
 

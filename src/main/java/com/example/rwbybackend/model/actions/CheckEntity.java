@@ -1,5 +1,6 @@
 package com.example.rwbybackend.model.actions;
 
+import com.example.rwbybackend.model.books.Responsible;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -38,5 +39,9 @@ public class CheckEntity {
     private int cancelNumber;
     @Column(name = "cancel_time")
     private LocalDateTime cancelTime;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "responsible_id")
+    private Responsible responsible;
 
 }

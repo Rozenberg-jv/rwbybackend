@@ -27,7 +27,7 @@ public class RailParticulars {
     private String railKind;
     @Column(name = "rail_group")
     private String railGroup;
-    @Column(name = "park")
+    @Column
     private String park;
     @Column(name = "from_arrow")
     private int fromArrow;

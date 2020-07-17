@@ -17,17 +17,17 @@ public class Defect {
     @Id
     @Column(nullable = false)
     private long id;
-    @Column(name = "code")
+    @Column
     private String code;
-    @Column(name = "deep")
+    @Column
     private int deep;
-    @Column(name = "length")
+    @Column
     private int length;
     @Column(name = "detect_time")
     private LocalDateTime detectTime;
     @Column(name = "notice_number")
     private int noticeNumber;
-    @Column(name = "comments")
+    @Column
     private String comments;
     @Column(name = "place_comment")
     private String placeComment;
