@@ -1,5 +1,7 @@
 package com.example.rwbybackend.model.actions;
 
+import com.example.rwbybackend.model.ID;
+import com.example.rwbybackend.model.books.Defectoscope;
 import com.example.rwbybackend.model.books.Responsible;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,19 +10,27 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true, exclude = "responsible")
 @Entity
 @Table(name = "check_entity")
-public class CheckEntity {
-    @Id
-    @Column(nullable = false)
-    private long id;
+public class CheckEntity extends ID {
+
     @Column(name = "check_date")
     private LocalDate checkDate;
+
+    @ManyToOne
+    @JoinColumn(name = "responsible_id")
+    private Responsible responsible;
+
+    @ManyToOne
+    @JoinColumn(name = "defectoscope_id")
+    private Defectoscope defectoscope;
+
     @Column(name = "work_region")
     private String workRegion;
     @Column(name = "main_track")
@@ -39,9 +49,5 @@ public class CheckEntity {
     private int cancelNumber;
     @Column(name = "cancel_time")
     private LocalDateTime cancelTime;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "responsible_id")
-    private Responsible responsible;
 
 }
