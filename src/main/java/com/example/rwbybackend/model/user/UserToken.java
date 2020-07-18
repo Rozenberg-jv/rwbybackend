@@ -1,7 +1,6 @@
 package com.example.rwbybackend.model.user;
 
 import com.example.rwbybackend.services.util.TokenGenerator;
-import com.sun.istack.NotNull;
 
 import lombok.*;
 
@@ -21,15 +20,12 @@ public class UserToken {
     @Column
     private String token;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private TokenType type;
 
-    @NotNull
     @ManyToOne(optional = false)
     private User user;
 
-    @NotNull
     @Builder.Default
     private LocalDateTime expires = LocalDateTime.now().plusMinutes(30);
 

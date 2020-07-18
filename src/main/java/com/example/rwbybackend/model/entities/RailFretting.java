@@ -1,5 +1,6 @@
 package com.example.rwbybackend.model.entities;
 
+import com.example.rwbybackend.model.ID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -10,13 +11,11 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "rail_fretting")
-public class RailFretting {
-    @Id
-    @Column( nullable = false)
-    private long id;
+public class RailFretting extends ID {
+
     @Column
     private int vertical;
     @Column(name = "active_side")

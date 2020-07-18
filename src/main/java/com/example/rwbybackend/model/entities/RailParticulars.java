@@ -1,5 +1,6 @@
 package com.example.rwbybackend.model.entities;
 
+import com.example.rwbybackend.model.ID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -10,13 +11,11 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "rail_particulars")
-public class RailParticulars {
-    @Id
-    @Column( nullable = false)
-    private long id;
+public class RailParticulars extends ID {
+
     @Column(name = "packing_date")
     private LocalDate packingDate;
     @Column(name = "packing_fature")

@@ -15,36 +15,36 @@ import java.io.IOException;
 
 public class AuthenticationFilter extends GenericFilterBean {
 
-	private static final String HARD_TOKEN_HEADER = "X-Auth-HARDTOKEN";
-	private static final String SOFT_TOKEN_HEADER = "X-Auth-SOFTTOKEN";
-	private static final String USER_SESSION_KEY = "X-Auth-USER";
+    private static final String HARD_TOKEN_HEADER = "X-Auth-HARDTOKEN";
+    private static final String SOFT_TOKEN_HEADER = "X-Auth-SOFTTOKEN";
+    private static final String USER_SESSION_KEY = "X-Auth-USER";
 
-	private AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
-	public AuthenticationFilter(AuthenticationManager authenticationManager) {
+    public AuthenticationFilter(AuthenticationManager authenticationManager) {
 
-		this.authenticationManager = authenticationManager;
-	}
+        this.authenticationManager = authenticationManager;
+    }
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
 
-		String username = httpRequest.getHeader(USER_SESSION_KEY);
-		String hardToken = httpRequest.getHeader(HARD_TOKEN_HEADER);
-		String softToken = httpRequest.getHeader(SOFT_TOKEN_HEADER);
+        String username = httpRequest.getHeader(USER_SESSION_KEY);
+        String hardToken = httpRequest.getHeader(HARD_TOKEN_HEADER);
+        String softToken = httpRequest.getHeader(SOFT_TOKEN_HEADER);
 
-		if (username != null) {
-			TokenAuthority tokenAuthority = TokenAuthority.builder()
-																										.hardToken(hardToken)
-																										.softToken(softToken)
-																										.build();
-			PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(username, tokenAuthority);
-			Authentication auth = authenticationManager.authenticate(authentication);
-			SecurityContextHolder.getContext().setAuthentication(auth);
-		}
+        if (username != null) {
+            TokenAuthority tokenAuthority = TokenAuthority.builder()
+                    .hardToken(hardToken)
+                    .softToken(softToken)
+                    .build();
+            PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(username, tokenAuthority);
+            Authentication auth = authenticationManager.authenticate(authentication);
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
 
-		chain.doFilter(request, response);
-	}
+        chain.doFilter(request, response);
+    }
 }

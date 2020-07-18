@@ -4,17 +4,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Getter
 @RequiredArgsConstructor
 @Builder
-public class LoginForm {
+public class SearchForm {
 
-	@NotNull
-	private final String username;
+    private LocalDate dateFrom;
 
-	@NotNull
-	private final String password;
+    private LocalDate dateTo;
 
 }
