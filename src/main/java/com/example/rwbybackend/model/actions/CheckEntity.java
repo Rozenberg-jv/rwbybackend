@@ -1,5 +1,6 @@
 package com.example.rwbybackend.model.actions;
 
+import com.example.rwbybackend.model.ID;
 import com.example.rwbybackend.model.books.Responsible;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,13 +13,11 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true, exclude = "responsible")
 @Entity
 @Table(name = "check_entity")
-public class CheckEntity {
-    @Id
-    @Column(nullable = false)
-    private long id;
+public class CheckEntity extends ID {
+
     @Column(name = "check_date")
     private LocalDate checkDate;
     @Column(name = "work_region")

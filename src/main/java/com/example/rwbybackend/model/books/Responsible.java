@@ -1,5 +1,6 @@
 package com.example.rwbybackend.model.books;
 
+import com.example.rwbybackend.model.ID;
 import com.example.rwbybackend.model.actions.CheckEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,13 +11,10 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true, of = {"lastname", "name", "patronym"})
 @Table(name = "responsibles_book")
-public class Responsible {
+public class Responsible extends ID {
 
-    @Id
-    @Column(name = "id", nullable = false)
-    private long responsibleId;
     @Column
     private String lastname;
     @Column

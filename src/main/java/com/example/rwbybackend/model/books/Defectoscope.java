@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "defectoscopes_book")
 public class Defectoscope {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
