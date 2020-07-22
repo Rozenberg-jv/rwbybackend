@@ -1,5 +1,7 @@
 package com.example.rwbybackend.model.entities;
 
+import com.example.rwbybackend.model.ID;
+import com.example.rwbybackend.model.actions.CheckEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -10,13 +12,11 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "detects")
-public class Defect {
-    @Id
-    @Column(nullable = false)
-    private long id;
+public class Defect extends ID {
+
     @Column
     private String code;
     @Column
@@ -26,7 +26,7 @@ public class Defect {
     @Column(name = "detect_time")
     private LocalDateTime detectTime;
     @Column(name = "notice_number")
-    private int noticeNumber;
+    private String noticeNumber;
     @Column
     private String comments;
     @Column(name = "place_comment")
@@ -34,4 +34,9 @@ public class Defect {
     @Column(name = "defect_group")
     private String defectGroup;
 
+    @ManyToOne
+    private Rail rail;
+
+    @ManyToOne
+    private CheckEntity checkEntity;
 }

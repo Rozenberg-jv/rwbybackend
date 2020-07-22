@@ -48,7 +48,6 @@ public class User extends ID {
     @Column(name = "home_phone")
     private String homePhone;
 
-    @Column
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "department_id")
     private Department department;

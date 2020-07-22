@@ -40,13 +40,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		RequestHeaderAuthenticationFilter filter = new RequestHeaderAuthenticationFilter();
-		filter.setPrincipalRequestHeader("USER");
-		filter.setCredentialsRequestHeader("TOKEN");
+//		filter.setPrincipalRequestHeader("USER");
+//		filter.setCredentialsRequestHeader("TOKEN");
 
 		http.cors().and()
 				.addFilterBefore(
-						new AuthenticationFilter(authenticationManager()),
-						BasicAuthenticationFilter.class)
+				new AuthenticationFilter(authenticationManager()),
+				BasicAuthenticationFilter.class)
 				.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
