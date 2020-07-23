@@ -14,24 +14,24 @@ create table if not exists defectoscopes_book (
   );
 
 create table if not exists responsibles_book (         -- СПРАВОЧНИК ответственных лиц (=операторов)
-                                               id BIGINT primary key auto_increment,
-                                               lastname varchar(255),        -- фамилия
+  id BIGINT primary key auto_increment,
+  lastname varchar(255),        -- фамилия
   name varchar(255),            -- имя
   patronym varchar(255));       -- отчество
 
 create table if not exists responsibles_to_defectoscopes (
-                                                           id_responsible bigint,
-                                                           id_defectoscope bigint,
-                                                           primary key (id_responsible, id_defectoscope),
+  id_responsible bigint,
+  id_defectoscope bigint,
+  primary key (id_responsible, id_defectoscope),
   foreign key (id_responsible) references responsibles_book(id),
   foreign key (id_defectoscope) references defectoscopes_book(id)
   );
 create table if not exists check_entity (
-                                          id bigint primary key auto_increment,
-                                          check_date date,                   -- 1) Дата проверки
+  id bigint primary key auto_increment,
+  check_date date,                   -- 1) Дата проверки
   -- ФК для инфо из defectoscope_book (СПРАВОЧНИК закрепленных за операторами дефектоскопов)
-                                          responsible_id BIGINT,            -- 2) Фамилия оператора, тип дефектоскопа, № дефектоскопа
-                                          constraint foreign key(responsible_id) references responsibles_book(id),
+  responsible_id BIGINT,            -- 2) Фамилия оператора, тип дефектоскопа, № дефектоскопа
+  constraint foreign key(responsible_id) references responsibles_book(id),
   defectoscope_id bigint,
   constraint foreign key(defectoscope_id) references defectoscopes_book(id),
   work_region varchar(255),          -- 3) Место работы оператора
