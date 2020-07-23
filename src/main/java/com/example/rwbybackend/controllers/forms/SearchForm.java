@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class SearchForm {
 
+
     private LocalDate dateFrom;
 
     private LocalDate dateTo;
