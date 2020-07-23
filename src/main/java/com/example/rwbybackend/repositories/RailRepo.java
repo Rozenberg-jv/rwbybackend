@@ -7,17 +7,9 @@ import java.util.Optional;
 
 public interface RailRepo extends JpaRepository<Rail,Long> {
 
-    Optional<Rail> findBySubdivisionNumber(int subdivisionNumber);
 
-    Optional<Rail> findByTrackNumber(int trackNumber);
-
-    Optional<Rail> findByStationOrKm(String stationOrKm);
-
-    Optional<Rail> findByPicketNumber(int picketNumber);
-
-    Optional<Rail> findBySectionNumber(int sectionNumber);
-
-    Optional<Rail> findBySlot(String slot);
+    Optional<Rail> findRailByPlace(int subdivision, int trackNumber, String stationOrKm,
+                                   int picketNumber, int sectionNumber, String slot);
 
 
 }
