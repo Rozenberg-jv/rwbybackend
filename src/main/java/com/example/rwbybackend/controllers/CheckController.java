@@ -32,7 +32,7 @@ public class CheckController {
     @GetMapping
     public ResponseEntity<DataPU27> getPU27Data(@RequestBody SearchForm form) {
 
-        DataPU27 data = checkService.getPU27Data(form);
+        DataPU27 data = (DataPU27) checkService.getPU27Data(form);
 
         return ResponseEntity.of(Optional.of(data));
     }

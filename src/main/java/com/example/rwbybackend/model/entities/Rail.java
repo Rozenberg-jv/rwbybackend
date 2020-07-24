@@ -4,6 +4,7 @@ import com.example.rwbybackend.model.ID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@ToString(exclude = {"railParticulars", "railFretting"})
 @EqualsAndHashCode(callSuper = true,
         of = {"subdivisionNumber", "trackNumber", "stationOrKm", "picketNumber", "slot", "sectionNumber"})
 @Entity
@@ -57,4 +59,6 @@ public class Rail extends ID {
     private RailFretting railFretting;
 
 
+    public Rail(int subdivisionNumber, int trackNumber, String stationOrKm, int picketNumber, int sectionNumber, String slot) {
+    }
 }

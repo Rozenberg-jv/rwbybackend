@@ -3,19 +3,24 @@ package com.example.rwbybackend.model.actions;
 import com.example.rwbybackend.model.ID;
 import com.example.rwbybackend.model.books.Defectoscope;
 import com.example.rwbybackend.model.books.Responsible;
+import com.example.rwbybackend.model.entities.Defect;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true, exclude = "responsible")
+@ToString(exclude = "defects")
 @Entity
 @Table(name = "check_entity")
 public class CheckEntity extends ID {
@@ -49,5 +54,13 @@ public class CheckEntity extends ID {
     private int cancelNumber;
     @Column(name = "cancel_time")
     private LocalDateTime cancelTime;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "detects", fetch = FetchType.EAGER)
+    private Set<Defect> defects = new HashSet<>();
+
+    public CheckEntity(LocalDate date, long responsibleId, long defectoscopeId,
+                       String workRegion, int mainTrack, int ioTrack, int arrowTrack,
+                       int weldedJoint, int connectedTrack) {
+    }
 
 }

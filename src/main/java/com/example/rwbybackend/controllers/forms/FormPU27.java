@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class FormPU27 {
 
     @NotNull
-    private LocalDate date;
+    private LocalDate checkDate;
     @NotNull
     private long responsibleId;
     @NotNull
@@ -31,6 +31,7 @@ public class FormPU27 {
     private int weldedJoint;
     @NotNull
     private int connectedTrack;
+
     private int subdivisionNumber;
     private int trackNumber;
     private String stationOrKm;
