@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Optional;
 
 @RestController("/api/check")
@@ -30,10 +32,10 @@ public class CheckController {
     }
 
     @GetMapping
-    public ResponseEntity<DataPU27> getPU27Data(@RequestBody SearchForm form) {
+    public ResponseEntity<List<DataPU27>> getPU27Data(@RequestBody @NotNull SearchForm form) {
 
-        DataPU27 data = (DataPU27) checkService.getPU27Data(form);
+        List<DataPU27> data = checkService.getPU27Data(form);
 
-        return ResponseEntity.of(Optional.of(data));
+        return ResponseEntity.ok(data);
     }
 }

@@ -55,7 +55,7 @@ public class CheckEntity extends ID {
     @Column(name = "cancel_time")
     private LocalDateTime cancelTime;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "detects", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "checkEntity", fetch = FetchType.EAGER)
     private Set<Defect> defects = new HashSet<>();
 
     public CheckEntity(LocalDate date, long responsibleId, long defectoscopeId,

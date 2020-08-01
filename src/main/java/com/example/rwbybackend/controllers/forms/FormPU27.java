@@ -1,15 +1,14 @@
 package com.example.rwbybackend.controllers.forms;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class FormPU27 {
 
@@ -49,7 +48,7 @@ public class FormPU27 {
     private int length;
 
     private LocalDateTime detectTime;
-    private String noticeNumber;
+    private String noticeTarget;
     private String comments;
 
 }

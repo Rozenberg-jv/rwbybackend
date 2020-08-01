@@ -30,4 +30,8 @@ public class Defectoscope extends ID {
             inverseJoinColumns = {@JoinColumn(name = "id_defectoscope")})
     private List<Responsible> responsibles;
 
+    public String getShortName() {
+
+        return String.format("%s %s", type, factoryNumber);
+    }
 }
