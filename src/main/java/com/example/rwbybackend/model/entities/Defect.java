@@ -27,10 +27,21 @@ public class Defect extends ID {
     private int length;
     @Column(name = "detect_time")
     private LocalDateTime detectTime;
-    @Column(name = "notice_number")
-    private String noticeNumber;
+    @Column(name = "notice_target")
+    private String noticeTarget;
     @Column
     private String comments;
+
+    //ПУ-2б
+    @Column(name = "notice_number")
+    private int noticeNumber;
+    @Column(name = "notice_time")
+    private LocalDateTime noticeTime;
+    @Column(name = "cancel_number")
+    private int cancelNumber;
+    @Column(name = "cancel_time")
+    private LocalDateTime cancelTime;
+
     @Column(name = "place_comment")
     private String placeComment;
     @Column(name = "defect_group")
@@ -45,5 +56,9 @@ public class Defect extends ID {
 
     public Defect(String code, int deep, int length, LocalDateTime detectTime, String noticeNumber,
                   String comments, Rail rail, CheckEntity checkEntity) {
+    }
+
+    public Defect(String code, LocalDateTime detectTime, int noticeNumber, LocalDateTime noticeTime,
+                  int cancelNumber, LocalDateTime cancelTime, Rail rail, CheckEntity checkEntity) {
     }
 }

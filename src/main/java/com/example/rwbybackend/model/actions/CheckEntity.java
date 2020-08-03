@@ -48,12 +48,16 @@ public class CheckEntity extends ID {
     private int weldedJoint;
     @Column(name = "connected_track")
     private int connectedTrack;
-    @Column(name = "notice_time")
-    private LocalDateTime noticeTime;
-    @Column(name = "cancel_number")
-    private int cancelNumber;
-    @Column(name = "cancel_time")
-    private LocalDateTime cancelTime;
+
+//    //ПУ-2б - перенесено в Defect
+//    @Column(name = "notice_number")
+//    private int noticeNumber;
+//    @Column(name = "notice_time")
+//    private LocalDateTime noticeTime;
+//    @Column(name = "cancel_number")
+//    private int cancelNumber;
+//    @Column(name = "cancel_time")
+//    private LocalDateTime cancelTime;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "checkEntity", fetch = FetchType.EAGER)
     private Set<Defect> defects = new HashSet<>();

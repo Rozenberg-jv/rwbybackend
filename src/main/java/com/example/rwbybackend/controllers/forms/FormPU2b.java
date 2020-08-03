@@ -1,16 +1,20 @@
 package com.example.rwbybackend.controllers.forms;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FormPU27 {
+public class FormPU2b {
 
     @NotNull
     private LocalDate checkDate;
@@ -18,18 +22,6 @@ public class FormPU27 {
     private long responsibleId;
     @NotNull
     private long defectoscopeId;
-    @NotNull
-    private String workRegion;
-    @NotNull
-    private int mainTrack;
-    @NotNull
-    private int ioTrack;
-    @NotNull
-    private int arrowTrack;
-    @NotNull
-    private int weldedJoint;
-    @NotNull
-    private int connectedTrack;
 
     private int subdivisionNumber;
     private int trackNumber;
@@ -44,13 +36,14 @@ public class FormPU27 {
     private long railLength;
 
     private String code;
-    private int deep;
-    private int length;
-
     private LocalDateTime detectTime;
-    private String noticeTarget;
-    private String comments;
 
- //   public String getCodeType (){     return String.format("s%1", code); }
+    private int noticeNumber;
+    private LocalDateTime noticeTime;
+
+    private LocalDateTime changeDate;
+
+    private int cancelNumber;
+    private LocalDateTime cancelTime;
 
 }

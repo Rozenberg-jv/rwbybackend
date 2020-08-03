@@ -37,14 +37,16 @@ public class CheckService {
     @NonNull
     private final DefectRepository defectRepository;
 
+
     public void enterData(FormPU27 form) {
-        if (form.getCode() != null && !form.getCode().isEmpty()) { //Проверяем есть ли дефект, т.е. начато ли заполнение  9 графы
+        if (form.getCode() != null && !form.getCode().isEmpty()) { //Проверяем есть ли дефект, т.е. заполнена ли 19 графы
             Defect defect = new Defect(form.getCode(), form.getDeep(),
                     form.getLength(), form.getDetectTime(),
                     form.getNoticeTarget(), form.getComments(),
                     getRails(form), getCheckEntities(form)); // эти методы ниже отдельно. Проверяем есть ли рельс такой или проверка начата ли
             // и сохраняем новые записи либо достаем имеющиеся в БД для сохранения связи - дефект-рельс-проверка
-            defectRepository.save(defect);
+            defectRepository.saveAndFlush(defect);
+
         } else {
             // если дефектов нет, то просто сохраняем данные о проверке, не вызывая метода getCheckEntities
             CheckEntity checkEntity = new CheckEntity(form.getCheckDate(), form.getResponsibleId(),
@@ -83,16 +85,7 @@ public class CheckService {
         }
     }
 
-
     public List<DataPU27> getPU27Data(SearchForm form) {
-        /*List<LocalDate> checkDates = new ArrayList<>();
-        for (LocalDate i = form.getDateFrom(); i.isAfter(form.getDateTo()); i = i.plusDays(1)) {
-            checkDates.add(i);
-        }
-        List<CheckEntity> checkEntities = new ArrayList<>();
-        for (LocalDate d : checkDates) {
-            checkEntities.add(checkEntityRepository.findCheckEntitiesByCheckDate(d));
-        }*/
 
         List<CheckEntity> checkEntities;
 
@@ -113,8 +106,9 @@ public class CheckService {
                     form.getDateTo());
         }
 
-        return renderCheckEntities(checkEntities);
+        return renderCheckEntities( checkEntities);
     }
+
 
     private List<DataPU27> renderCheckEntities(List<CheckEntity> checkEntities) {
 
@@ -150,13 +144,13 @@ public class CheckService {
                 .deep(defect.getDeep())
                 .length(defect.getLength())
                 .detectTime(defect.getDetectTime())
-                .noticeTarget(defect.getNoticeNumber())
+                .noticeTarget(defect.getNoticeTarget())
                 .comments(defect.getComments())
                 .rail(renderRail(defect.getRail()))
                 .build();
     }
 
-    private RailData renderRail(Rail rail) {
+     RailData renderRail(Rail rail) {
 
         return RailData.builder()
                 .subdivisionNumber(rail.getSubdivisionNumber())

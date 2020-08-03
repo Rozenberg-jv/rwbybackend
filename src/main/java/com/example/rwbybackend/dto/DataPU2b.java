@@ -1,6 +1,5 @@
 package com.example.rwbybackend.dto;
 
-import com.example.rwbybackend.model.entities.Defect;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,17 +9,11 @@ import java.util.Set;
 
 @Builder
 @Getter
-public class DataPU27 {
+public class DataPU2b {
 
     private final LocalDate checkDate;
     private final String responsible;
     private final String defectoscope;
-
-    private final int mainTrack;
-    private final int ioTrack;
-    private final int arrowTrack;
-    private final int weldedJoint;
-    private final int connectedTrack;
 
     private final Set<DefectData> defects;
 
@@ -37,12 +30,17 @@ public class DataPU27 {
     private final long railLength;
 
     private final String code;
-    private final int deep;
-    private final int length;
-
-
 
     private final LocalDateTime detectTime;
-    private final String noticeTarget;
-    private final String comments;
+
+    private final int noticeNumber;
+    private final LocalDateTime noticeTime;
+
+    private final LocalDateTime changeDate;
+
+    private final int cancelNumber;
+    private final LocalDateTime cancelTime;
+
+
+
 }

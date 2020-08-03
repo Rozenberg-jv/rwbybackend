@@ -1,6 +1,7 @@
 package com.example.rwbybackend.controllers;
 
 import com.example.rwbybackend.controllers.forms.FormPU27;
+import com.example.rwbybackend.controllers.forms.FormPU2b;
 import com.example.rwbybackend.controllers.forms.SearchForm;
 import com.example.rwbybackend.dto.DataPU27;
 import com.example.rwbybackend.dto.DataPU2b;
@@ -18,31 +19,36 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 
-@RestController("/api/check")
+@RestController("/api/defect")
 @RequiredArgsConstructor
-public class CheckController {
-
-    @NonNull
-    private final CheckService checkService;
+public class DefectController {
 
     @NonNull
     private final DefectService defectService;
 
-    @PostMapping("")
-    public ResponseEntity<Void> enterPU27Data(@RequestBody FormPU27 form) {
-
-        checkService.enterData(form);
-
-        return ResponseEntity.of(Optional.empty());
-    }
 
     @GetMapping
-    public ResponseEntity<List<DataPU27>> getPU27Data(@RequestBody @NotNull SearchForm form) {
+    public ResponseEntity<List<DataPU2b>> getPU2bData(@RequestBody @NotNull SearchForm form) {
 
-        List<DataPU27> data = checkService.getPU27Data(form);
+        List<DataPU2b> data = defectService.getPU2bData(form);
 
         return ResponseEntity.ok(data);
     }
 
+    @GetMapping
+    public ResponseEntity<DataPU2b> getPU2b(@RequestBody FormPU2b form) {
+
+        DataPU2b data = defectService.getPU2b(form);
+
+        return ResponseEntity.ok(data);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Void> editPU27Data(@RequestBody FormPU2b form) {
+
+        defectService.editDataPU2b(form);
+
+        return ResponseEntity.of(Optional.empty());
+    }
 
 }

@@ -9,4 +9,9 @@
         <sqlFile path="/db/changelog/stage1/000_initial.sql"/>
     </changeSet>
 
+    <changeSet id="001_initial.sql" author="svshelestova">
+        <comment>Сorrecting column names</comment>
+        <sqlFile path="/db/changelog/stage1/001_initial.sql"/>
+    </changeSet>
+
 </databaseChangeLog>
