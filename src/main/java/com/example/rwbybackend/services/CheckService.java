@@ -56,7 +56,7 @@ public class CheckService {
         }
     }
 
-    public CheckEntity getCheckEntities(FormPU27 form) {
+    private CheckEntity getCheckEntities(FormPU27 form) {
         Optional<CheckEntity> checkEntities = checkEntityRepository
                 .findCheckEntityByCheckDateAndWorkRegion(form.getCheckDate(), form.getWorkRegion());
         if (checkEntities.isPresent()) {
@@ -70,7 +70,7 @@ public class CheckService {
         }
     }
 
-    public Rail getRails(FormPU27 form) {
+    private Rail getRails(FormPU27 form) {
         Optional<Rail> rails = railRepository.findRailByPlace(form.getSubdivisionNumber(), form.getTrackNumber(),
                 form.getStationOrKm(), form.getPicketNumber(), form.getSectionNumber(),
                 form.getSlot());
@@ -150,7 +150,7 @@ public class CheckService {
                 .build();
     }
 
-     RailData renderRail(Rail rail) {
+     private RailData renderRail(Rail rail) {
 
         return RailData.builder()
                 .subdivisionNumber(rail.getSubdivisionNumber())

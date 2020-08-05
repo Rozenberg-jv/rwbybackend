@@ -120,29 +120,12 @@ public class DefectService {
     }
 
 
-    public void editDataPU2b(FormPU2b form) {
-        Defect defect = new Defect(form.getCode(), form.getDetectTime(),
-                form.getNoticeNumber(), form.getNoticeTime(), form.getCancelNumber(),
-                form.getCancelTime(), getRail(form), getCheckEntity(form));
-        defectRepository.saveAndFlush(defect);
-
-
-    }
-
-    private CheckEntity getCheckEntity(FormPU2b form) {
-        Optional<CheckEntity> checkEntities = checkEntityRepository
-                .findCheckEntityByCheckDateAndResponsibleAndDefectoscope(form.getCheckDate(), form.getResponsibleId(), form.getDefectoscopeId());
-
-            return checkEntities.get();
-    }
-
-
-    private Rail getRail(FormPU2b form) {
-        Optional<Rail> rails = railRepository.findRailByPlace(form.getSubdivisionNumber(), form.getTrackNumber(),
+    public void updateDataPU2b(FormPU2b form) {
+        defectRepository.updateDefect(form.getNoticeNumber(), form.getNoticeTime(), form.getCancelNumber(), form.getCancelTime(), //новые данные дефекта
+                form.getCheckDate(), form.getResponsibleId(), form.getDefectoscopeId(), // проверка
+                form.getSubdivisionNumber(), form.getTrackNumber(), //рельс
                 form.getStationOrKm(), form.getPicketNumber(), form.getSectionNumber(), form.getSlot());
 
-            return rails.get();
     }
-
 
 }

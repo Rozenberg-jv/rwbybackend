@@ -44,9 +44,9 @@ public class DefectController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> editPU27Data(@RequestBody FormPU2b form) {
+    public ResponseEntity<Void> updatePU27Data(@RequestBody FormPU2b form) {
 
-        defectService.editDataPU2b(form);
+        defectService.updateDataPU2b(form);
 
         return ResponseEntity.of(Optional.empty());
     }
