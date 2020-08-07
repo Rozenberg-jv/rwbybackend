@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 
-@RestController("/api/defect")
+@RestController
 @RequiredArgsConstructor
 public class DefectController {
 
@@ -27,7 +27,7 @@ public class DefectController {
     private final DefectService defectService;
 
 
-    @GetMapping
+    @GetMapping ("/api/defects")
     public ResponseEntity<List<DataPU2b>> getPU2bData(@RequestBody @NotNull SearchForm form) {
 
         List<DataPU2b> data = defectService.getPU2bData(form);
@@ -35,7 +35,7 @@ public class DefectController {
         return ResponseEntity.ok(data);
     }
 
-    @GetMapping
+    @GetMapping ("/api/PU2b")
     public ResponseEntity<DataPU2b> getPU2b(@RequestBody FormPU2b form) {
 
         DataPU2b data = defectService.getPU2b(form);
@@ -43,8 +43,8 @@ public class DefectController {
         return ResponseEntity.ok(data);
     }
 
-    @PostMapping("")
-    public ResponseEntity<Void> updatePU27Data(@RequestBody FormPU2b form) {
+    @PostMapping("/api/defects")
+    public ResponseEntity<Void> updatePUbData(@RequestBody FormPU2b form) {
 
         defectService.updateDataPU2b(form);
 
