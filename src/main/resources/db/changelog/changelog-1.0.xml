@@ -14,4 +14,9 @@
         <sqlFile path="/db/changelog/stage1/001_initial.sql"/>
     </changeSet>
 
+    <changeSet id="002_initial.sql" author="svshelestova">
+        <comment>new entity for PU-4</comment>
+        <sqlFile path="/db/changelog/stage1/002_initial.sql"/>
+    </changeSet>
+
 </databaseChangeLog>

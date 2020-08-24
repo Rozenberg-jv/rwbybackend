@@ -1,12 +1,12 @@
 package com.example.rwbybackend.controllers;
 
-import com.example.rwbybackend.controllers.forms.FormPU27;
 import com.example.rwbybackend.controllers.forms.FormPU2b;
+import com.example.rwbybackend.controllers.forms.FormPU4;
 import com.example.rwbybackend.controllers.forms.SearchForm;
-import com.example.rwbybackend.dto.DataPU27;
 import com.example.rwbybackend.dto.DataPU2b;
-import com.example.rwbybackend.services.CheckService;
+import com.example.rwbybackend.dto.DataPU4;
 import com.example.rwbybackend.services.DefectService;
+import com.example.rwbybackend.services.util.PickedRailService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,32 +21,24 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-public class DefectController {
+public class PickedRailController {
 
     @NonNull
-    private final DefectService defectService;
+    private final PickedRailService pickedRailService;
 
 
-    @GetMapping ("/api/defects")
-    public ResponseEntity<List<DataPU2b>> getPU2bData(@RequestBody @NotNull SearchForm form) {
+    @GetMapping ("/api/picked")
+    public ResponseEntity<List<DataPU4>> getPU4Data(@RequestBody @NotNull SearchForm form) {
 
-        List<DataPU2b> data = defectService.getPU2bData(form);
-
-        return ResponseEntity.ok(data);
-    }
-
-    @GetMapping ("/api/PU2b")
-    public ResponseEntity<DataPU2b> getPU2b(@RequestBody FormPU2b form) {
-
-        DataPU2b data = defectService.getPU2b(form);
+        List<DataPU4> data = pickedRailService.getPU4Data(form);
 
         return ResponseEntity.ok(data);
     }
 
-    @PostMapping("/api/defects")
-    public ResponseEntity<Void> updatePU2bData(@RequestBody FormPU2b form) {
+    @PostMapping("")
+    public ResponseEntity<Void> enterPU4Data(@RequestBody FormPU4 form) {
 
-        defectService.updateDataPU2b(form);
+        pickedRailService.enterData(form);
 
         return ResponseEntity.of(Optional.empty());
     }

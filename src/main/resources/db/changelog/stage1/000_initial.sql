@@ -75,27 +75,27 @@ create table if not exists rail_particulars (
 -- для ПУ-2 Ч.2 Ведомости рельсов, лежащих в главных и приемо-отправочных путях - графы 18-29 ПУ-2
 -- подробности износа рельса
 create table if not exists rail_fretting (
-                                           id bigint primary key auto_increment,
-                                           vertical INT,                 -- 18) вертикальный,
-                                           active_side INT,              -- 19) боковой рабочей грани,
-                                           inactive_side INT,            -- 20) боковой нерабочей грани,
-                                           crush_clinch INT,             -- 21) смятие и провисание стыка,
-                                           ripply_fretting INT,          -- 22) волнообразный износ.
-                                           fusing_date date,             -- 23) дата наплавки
-                                           polish_date date,             -- 24) дата шлифовки
-                                           polish_kind date,             -- 25) вид шлифовки
-                                           defect_code BIGINT,           -- 26) код дефекта (СПРАВОЧНИК)
-                                           clamp_kind varchar(255),      -- 27) вид рельсового скрепления
-  tonnage_before bigint,        -- 28) Пропущенный тоннаж - до переукладки
-  tonnage_after bigint);        -- 29) Пропущенный тоннаж - после переукладки
+ id bigint primary key auto_increment,
+ vertical INT,                 -- 18) вертикальный,
+ active_side INT,              -- 19) боковой рабочей грани,
+ inactive_side INT,            -- 20) боковой нерабочей грани,
+ crush_clinch INT,             -- 21) смятие и провисание стыка,
+ ripply_fretting INT,          -- 22) волнообразный износ.
+ fusing_date date,             -- 23) дата наплавки
+ polish_date date,             -- 24) дата шлифовки
+ polish_kind date,             -- 25) вид шлифовки
+ defect_code BIGINT,           -- 26) код дефекта (СПРАВОЧНИК)
+ clamp_kind varchar(255),      -- 27) вид рельсового скрепления
+ tonnage_before bigint,        -- 28) Пропущенный тоннаж - до переукладки
+ tonnage_after bigint);        -- 29) Пропущенный тоннаж - после переукладки
 
 -- Место, где обнаружен деф/остродеф. рельс + Хар-ка рельса (старт с ПУ-27) + иные ПУ
 create table if not exists rails (
-                                   id bigint primary key auto_increment,
+  id bigint primary key auto_increment,
   -- region info (ПУ-27: графы 9-14; ПУ-2а/ПУ-2б: графы 4-9)
-                                   subdivision_number int,       -- 9) № околотка
-                                   track_number int,             -- 10) № пути
-                                   station_or_km varchar(255),   -- 11) КМ или название станции
+  subdivision_number int,       -- 9) № околотка
+  track_number int,             -- 10) № пути
+  station_or_km varchar(255),   -- 11) КМ или название станции
   picket_number int,            -- 12) № ПК (пикет)
   section_number int,           -- 13) № Звена
   slot varchar(255),            -- 14) нитка (правая/ левая)
@@ -115,9 +115,9 @@ create table if not exists rails (
   change_date datetime);        -- дата замены (ПУ-2а графа 17, ПУ-2 (галвн.) - графа 30), время замены (ПУ-2б графа 17)
 
 create table if not exists defects (
-                                     id bigint primary key auto_increment,
+  id bigint primary key auto_increment,
   -- (старт с ПУ-27, графы: 19-24)
-                                     code varchar(255),            -- 19) код дефекта (справочник) (ПУ-2а/2б графа 14)
+  code varchar(255),            -- 19) код дефекта (справочник) (ПУ-2а/2б графа 14)
   deep INT,                     -- 20) глубина дефекта (H), мм (только ПУ-2а, графа 15)
   length INT,                   -- 21) длина дефекта (L), мм (только ПУ-2а, графа 16)
   detect_time datetime,         -- 22) время обнаружения (только ПУ-2б, графа 15)
