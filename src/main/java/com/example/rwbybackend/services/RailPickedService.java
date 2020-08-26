@@ -1,11 +1,13 @@
-package com.example.rwbybackend.services.util;
+package com.example.rwbybackend.services;
 
 
 import com.example.rwbybackend.controllers.forms.FormPU4;
 import com.example.rwbybackend.controllers.forms.SearchForm;
 import com.example.rwbybackend.dto.DataPU4;
-import com.example.rwbybackend.model.entities.PickedRail;
-import com.example.rwbybackend.repositories.entities.PickedRailRepository;
+import com.example.rwbybackend.dto.RailData;
+import com.example.rwbybackend.model.entities.Rail;
+import com.example.rwbybackend.model.entities.RailPicked;
+import com.example.rwbybackend.repositories.entities.RailPickedRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,16 +18,16 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PickedRailService {
+public class RailPickedService {
 
     // Система должна отображать страницу со списком журналов на выбор (ПУ-2, ПУ-2а, ПУ-2б, ПУ-4) с фильтрами по ПЧ и датой (с-по).
 
     @NonNull
-    private final PickedRailRepository pickedRailRepository;
+    private final RailPickedRepository pickedRailRepository;
 
 
     public void enterData(FormPU4 form) {
-        PickedRail pickedRail = new PickedRail(form.getOutDate(), form.getTrackNumber(), form.getKilometer(),
+        RailPicked pickedRail = new RailPicked(form.getOutDate(), form.getTrackNumber(), form.getKilometer(),
                 form.getSectionNumber(), form.getOutReason(), form.getRailType(), form.getRailLength(),
                 form.getRailRef(), form.getFactoryMark(), form.getFactoryYear(), form.getPackingDate(),
                 form.getPackingPosition(), form.getTonnage(), form.getVerticalFretting(), form.getSideFretting(),
@@ -37,7 +39,7 @@ public class PickedRailService {
 
     public List<DataPU4> getPU4Data(SearchForm form) {
 
-        List<PickedRail> pickedRails;
+        List<RailPicked> pickedRails;
 
         if (form.getDateFrom() == null && form.getDateTo() == null) {
             LocalDate now = LocalDate.now();
@@ -59,44 +61,48 @@ public class PickedRailService {
         return renderPickedRails(pickedRails);
     }
 
-    private List<DataPU4> renderPickedRails(List<PickedRail> pickedRails) {
+    private List<DataPU4> renderPickedRails(List<RailPicked> pickedRails) {
 
         return pickedRails.stream().map(this::renderPickedRail).collect(Collectors.toList());
     }
 
-    private DataPU4 renderPickedRail(PickedRail pickedRail) {
+    private DataPU4 renderPickedRail(RailPicked railPicked) {
 
         return DataPU4.builder()
-                .outDate(pickedRail.getOutDate())
-                .trackNumber(pickedRail.getTrackNumber())
-                .kilometer(pickedRail.getKilometer())
-                .sectionNumber(pickedRail.getSectionNumber())
-                .outReason(pickedRail.getOutReason())
-                .railType(pickedRail.getRailType())
-                .railLength(pickedRail.getRailLength())
-                .railRef(pickedRail.getRailRef())
-                .factoryMark(pickedRail.getFactoryMark())
-                .factoryYear(pickedRail.getFactoryYear())
-                .packingDate(pickedRail.getPackingDate())
-                .packingPosition(pickedRail.getPackingPosition())
-                .tonnage(pickedRail.getTonnage())
-                .verticalFretting(pickedRail.getVerticalFretting())
-                .sideFretting(pickedRail.getSideFretting())
-                .code(pickedRail.getCode())
-                .profilePermille(pickedRail.getProfilePermille())
-                .profile(pickedRail.getProfile())
-                .trackPlan(pickedRail.getTrackPlan())
-                .radius(pickedRail.getRadius())
-                .rise(pickedRail.getRise())
-                .railSlot(pickedRail.getRailSlot())
-                .ballastKind(pickedRail.getBallastKind())
-                .tieKind(pickedRail.getTieKind())
-                .speed(pickedRail.getSpeed())
+                .outDate(railPicked.getOutDate())
+                .rail(renderRail(railPicked.getRail()))
+                .kilometer(railPicked.getKilometer())
+                .outReason(railPicked.getOutReason())
+                .railRef(railPicked.getRailRef())
+                .packingDate(railPicked.getPackingDate())
+                .packingPosition(railPicked.getPackingPosition())
+                .tonnage(railPicked.getTonnage())
+                .verticalFretting(railPicked.getVerticalFretting())
+                .sideFretting(railPicked.getSideFretting())
+                .code(railPicked.getCode())
+                .profilePermille(railPicked.getProfilePermille())
+                .profile(railPicked.getProfile())
+                .trackPlan(railPicked.getTrackPlan())
+                .radius(railPicked.getRadius())
+                .rise(railPicked.getRise())
+                .railSlot(railPicked.getRailSlot())
+                .ballastKind(railPicked.getBallastKind())
+                .tieKind(railPicked.getTieKind())
+                .speed(railPicked.getSpeed())
                 .build();
 
     }
 
-
+    private RailData renderRail(Rail rail) {
+        return RailData.builder()
+                .trackNumber(rail.getTrackNumber())
+                .sectionNumber(rail.getSectionNumber())
+                .factoryMark(rail.getFactoryMark())
+                .factoryYear(rail.getFactoryYear())
+                .railType(rail.getRailType())
+                .railLength(rail.getRailLength())
+                .build();
+    }
 
 
 }

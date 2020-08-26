@@ -12,15 +12,9 @@ import java.util.Set;
 public class DataPU4 {
 
     private final LocalDate outDate;
-    private final int trackNumber;
     private final String kilometer;
-    private final int sectionNumber;
     private final String outReason;
-    private final String railType;
-    private final int railLength;
     private final String railRef;
-    private final String factoryMark;
-    private final LocalDate factoryYear;
     private final LocalDate packingDate;
     private final String packingPosition;
     private final int tonnage;
@@ -37,5 +31,6 @@ public class DataPU4 {
     private final String tieKind;
     private final int speed;
 
+    private final RailData rail;
 
 }

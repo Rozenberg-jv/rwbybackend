@@ -58,6 +58,9 @@ public class Rail extends ID {
     @JoinColumn(name = "fretting_id")
     private RailFretting railFretting;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "picked_id")
+    private RailPicked railPicked;
 
     public Rail(int subdivisionNumber, int trackNumber, String stationOrKm, int picketNumber, int sectionNumber, String slot) {
     }
