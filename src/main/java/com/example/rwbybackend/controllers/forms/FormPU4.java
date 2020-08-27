@@ -28,7 +28,7 @@ public class FormPU4 {    // PickedRail,  для изъятых рельс
     @NotNull
     private String railType;
     @NotNull
-    private int railLength;
+    private long railLength;
     @NotNull
     private String railRef;
     @NotNull

@@ -61,10 +61,9 @@ public class RailPicked extends ID {
     private Rail rail;
 
 
-    public RailPicked(LocalDate outDate, int trackNumber, String kilometer, int sectionNumber, String outReason,
-                      String railType, int railLength, String railRef, String factoryMark, LocalDate factoryYear,
+    public RailPicked(LocalDate outDate, Rail railInfo, String kilometer, String outReason, String railRef,
                       LocalDate packingDate, String packingPosition, int tonnage, int verticalFretting, int sideFretting,
-                      String code, int profilePermille, String profile, String trackPlan, int radius, int rise, String railSlot,
-                      String ballastKind, String tieKind, int speed) {
+                      String code, int profilePermille, String profile, String trackPlan, int radius, int rise,
+                      String railSlot, String ballastKind, String tieKind, int speed) {
     }
 }

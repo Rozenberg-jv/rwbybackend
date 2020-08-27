@@ -64,4 +64,8 @@ public class Rail extends ID {
 
     public Rail(int subdivisionNumber, int trackNumber, String stationOrKm, int picketNumber, int sectionNumber, String slot) {
     }
+
+    public Rail(int trackNumber, int sectionNumber, int trackNumber1, int sectionNumber1, String railType, long railLength,
+                String factoryMark, LocalDate factoryYear) {
+    }
 }
