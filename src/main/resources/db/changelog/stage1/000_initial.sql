@@ -14,24 +14,24 @@ create table if not exists defectoscopes_book (
   );
 
 create table if not exists responsibles_book (         -- СПРАВОЧНИК ответственных лиц (=операторов)
-                                               id BIGINT primary key auto_increment,
-                                               lastname varchar(255),        -- фамилия
+  id BIGINT primary key auto_increment,
+  lastname varchar(255),        -- фамилия
   name varchar(255),            -- имя
   patronym varchar(255));       -- отчество
 
 create table if not exists responsibles_to_defectoscopes (
-                                                           id_responsible bigint,
-                                                           id_defectoscope bigint,
-                                                           primary key (id_responsible, id_defectoscope),
+  id_responsible bigint,
+  id_defectoscope bigint,
+  primary key (id_responsible, id_defectoscope),
   foreign key (id_responsible) references responsibles_book(id),
   foreign key (id_defectoscope) references defectoscopes_book(id)
   );
 create table if not exists check_entity (
-                                          id bigint primary key auto_increment,
-                                          check_date date,                   -- 1) Дата проверки
+  id bigint primary key auto_increment,
+  check_date date,                   -- 1) Дата проверки
   -- ФК для инфо из defectoscope_book (СПРАВОЧНИК закрепленных за операторами дефектоскопов)
-                                          responsible_id BIGINT,            -- 2) Фамилия оператора, тип дефектоскопа, № дефектоскопа
-                                          constraint foreign key(responsible_id) references responsibles_book(id),
+  responsible_id BIGINT,            -- 2) Фамилия оператора, тип дефектоскопа, № дефектоскопа
+  constraint foreign key(responsible_id) references responsibles_book(id),
   defectoscope_id bigint,
   constraint foreign key(defectoscope_id) references defectoscopes_book(id),
   work_region varchar(255),          -- 3) Место работы оператора
@@ -48,12 +48,12 @@ create table if not exists check_entity (
   );
 
 --
--- особенности описания рельс, которые встречаются только в ПУ-2а и/или в ПУ-2б
+-- особенности описания рельс, которые встречаются только в ПУ-2
 create table if not exists rail_particulars (
                                               id bigint primary key auto_increment,
   -- общее для двух видов ПУ-2
-                                              packing_date date,             -- дата укладки (стат. - графа 8, главн. - графа 7)
-                                              packing_fature varchar(255),   -- признак укладки (стат. - графа 10, главн. - графа 9)
+  packing_date date,             -- дата укладки (стат. - графа 8, главн. - графа 7)
+  packing_fature varchar(255),   -- признак укладки (стат. - графа 10, главн. - графа 9)
   quality_category varchar(255), -- Категория качества (стат. - графа 11, главн. - графа 13)
   rail_kind varchar(255),        -- вид рельса (стат. - графа 13, главн. - графа 15)
   rail_group varchar(255),       -- группа рельса (стат. - графа 12, главн. - графа 14)
@@ -65,7 +65,7 @@ create table if not exists rail_particulars (
   track_length_from BIGINT,     -- 6) длина отрезка пути - от метра
   track_length_to BIGINT,       -- 7) длина отрезка пути - до метра
   clamp_kind varchar(255),      -- 14) вид рельсового скрепления
-  -- (inner?) только для рельс, лежащих в главных и приемо-отправочных путях (ПУ-2) - галочки
+  -- только для рельс, лежащих в главных и приемо-отправочных путях (ПУ-2)
   arrow_number INT,              -- 5) № Стрелочного перевода
   segment_number int,            -- 6.1) № плети
   repair_type varchar(255),      -- 11) Вид ремонта (Характеристика переуложенных рельсов)
@@ -75,27 +75,27 @@ create table if not exists rail_particulars (
 -- для ПУ-2 Ч.2 Ведомости рельсов, лежащих в главных и приемо-отправочных путях - графы 18-29 ПУ-2
 -- подробности износа рельса
 create table if not exists rail_fretting (
-                                           id bigint primary key auto_increment,
-                                           vertical INT,                 -- 18) вертикальный,
-                                           active_side INT,              -- 19) боковой рабочей грани,
-                                           inactive_side INT,            -- 20) боковой нерабочей грани,
-                                           crush_clinch INT,             -- 21) смятие и провисание стыка,
-                                           ripply_fretting INT,          -- 22) волнообразный износ.
-                                           fusing_date date,             -- 23) дата наплавки
-                                           polish_date date,             -- 24) дата шлифовки
-                                           polish_kind date,             -- 25) вид шлифовки
-                                           defect_code BIGINT,           -- 26) код дефекта (СПРАВОЧНИК)
-                                           clamp_kind varchar(255),      -- 27) вид рельсового скрепления
-  tonnage_before bigint,        -- 28) Пропущенный тоннаж - до переукладки
-  tonnage_after bigint);        -- 29) Пропущенный тоннаж - после переукладки
+ id bigint primary key auto_increment,
+ vertical INT,                 -- 18) вертикальный,
+ active_side INT,              -- 19) боковой рабочей грани,
+ inactive_side INT,            -- 20) боковой нерабочей грани,
+ crush_clinch INT,             -- 21) смятие и провисание стыка,
+ ripply_fretting INT,          -- 22) волнообразный износ.
+ fusing_date date,             -- 23) дата наплавки
+ polish_date date,             -- 24) дата шлифовки
+ polish_kind date,             -- 25) вид шлифовки
+ defect_code BIGINT,           -- 26) код дефекта (СПРАВОЧНИК)
+ clamp_kind varchar(255),      -- 27) вид рельсового скрепления
+ tonnage_before bigint,        -- 28) Пропущенный тоннаж - до переукладки
+ tonnage_after bigint);        -- 29) Пропущенный тоннаж - после переукладки
 
 -- Место, где обнаружен деф/остродеф. рельс + Хар-ка рельса (старт с ПУ-27) + иные ПУ
 create table if not exists rails (
-                                   id bigint primary key auto_increment,
+  id bigint primary key auto_increment,
   -- region info (ПУ-27: графы 9-14; ПУ-2а/ПУ-2б: графы 4-9)
-                                   subdivision_number int,       -- 9) № околотка
-                                   track_number int,             -- 10) № пути
-                                   station_or_km varchar(255),   -- 11) КМ или название станции
+  subdivision_number int,       -- 9) № околотка
+  track_number int,             -- 10) № пути
+  station_or_km varchar(255),   -- 11) КМ или название станции
   picket_number int,            -- 12) № ПК (пикет)
   section_number int,           -- 13) № Звена
   slot varchar(255),            -- 14) нитка (правая/ левая)
@@ -115,9 +115,9 @@ create table if not exists rails (
   change_date datetime);        -- дата замены (ПУ-2а графа 17, ПУ-2 (галвн.) - графа 30), время замены (ПУ-2б графа 17)
 
 create table if not exists defects (
-                                     id bigint primary key auto_increment,
+  id bigint primary key auto_increment,
   -- (старт с ПУ-27, графы: 19-24)
-                                     code varchar(255),            -- 19) код дефекта (справочник) (ПУ-2а/2б графа 14)
+  code varchar(255),            -- 19) код дефекта (справочник) (ПУ-2а/2б графа 14)
   deep INT,                     -- 20) глубина дефекта (H), мм (только ПУ-2а, графа 15)
   length INT,                   -- 21) длина дефекта (L), мм (только ПУ-2а, графа 16)
   detect_time datetime,         -- 22) время обнаружения (только ПУ-2б, графа 15)

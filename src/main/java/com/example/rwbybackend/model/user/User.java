@@ -26,7 +26,7 @@ public class User extends ID {
     @Column(name = "employee_number")
     private String employeeNumber;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;    // email
 
     @NotNull

@@ -25,6 +25,11 @@ public class Responsible extends ID {
     @ManyToMany(mappedBy = "responsibles")
     private List<Defectoscope> defectoscopes;
 
+    public String getShortName() {
+        return String.format("%s %s1. %s1.",
+                lastname, name == null ? "" : name, patronym == null ? "" : patronym);
+    }
+
 }
 
 

@@ -1,25 +1,18 @@
 package com.example.rwbybackend.model.user;
 
-import lombok.Getter;
 
-public enum RoleName {
+public interface RoleName {
 
-    ADMIN("ROLE_ADMIN"),
-    EMPLOEEVD("ROLE_EMPLOEEVD"),              // Сотрудник ВД
-    DEFEKTOSKOPIST("ROLE_DEFEKTOSKOPIST"),    // Дефектоскопист
-    TEKHNIK("ROLE_TEKHNIK"),                  // Сотрудник техотдела
-    DISPETCHER("ROLE_DISPETCHER"),            // Диспетчер ПЧ
-    TRACKMAN("ROLE_TRACKMAN"),                // Сотрудник службы пути
-    LABORANT("ROLE_LABORANT"),                // Сотрудник ДЛД (Дорожная лаборатория дефектоскопии)
-    GUEST("ROLE_GUEST");
+    String ADMIN = "ROLE_ADMIN";
+    String EMPLOEEVD = "ROLE_EMPLOEEVD";            // Сотрудник ВД
+    String DEFEKTOSKOPIST = "ROLE_DEFEKTOSKOPIST";    // Дефектоскопист
+    String TEKHNIK = "ROLE_TEKHNIK";                  // Сотрудник техотдела
+    String DISPETCHER = "ROLE_DISPETCHER";            // Диспетчер ПЧ
+    String TRACKMAN = "ROLE_TRACKMAN";             // Сотрудник службы пути
+    String LABORANT = "ROLE_LABORANT";                // Сотрудник ДЛД (Дорожная лаборатория дефектоскопии)
+    String GUEST = "ROLE_GUEST";
 
 
-    RoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    @Getter
-    private final String roleName;
 }
 
 

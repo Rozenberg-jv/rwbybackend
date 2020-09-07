@@ -49,12 +49,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				BasicAuthenticationFilter.class)
 				.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
+				/*.and()
 				.authorizeRequests()
 				.antMatchers(OPTIONS, "/api/**")
 				.permitAll()
 				.antMatchers("/api/backoffice/**")
-				.hasRole(RoleName.ADMIN.name())
+				.hasRole(RoleName.ADMIN.name())*/
 				.and()
 				.exceptionHandling()
 				.authenticationEntryPoint(unauthorizedEntryPoint());
