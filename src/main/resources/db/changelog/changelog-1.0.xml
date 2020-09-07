@@ -9,4 +9,19 @@
         <sqlFile path="/db/changelog/stage1/000_initial.sql"/>
     </changeSet>
 
+    <changeSet id="001_initial.sql" author="svshelestova">
+        <comment>Сorrecting column names</comment>
+        <sqlFile path="/db/changelog/stage1/001_initial.sql"/>
+    </changeSet>
+
+    <changeSet id="002_initial.sql" author="svshelestova">
+        <comment>new entity for PU-4</comment>
+        <sqlFile path="/db/changelog/stage1/002_initial.sql"/>
+    </changeSet>
+
+    <changeSet id="003_add_unique_roles.sql" author="svshelestova">
+        <comment>adding unique to the column username in the table users. Adding roles</comment>
+        <sqlFile path="/db/changelog/stage1/003_add_unique_roles.sql"/>
+    </changeSet>
+
 </databaseChangeLog>

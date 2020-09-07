@@ -15,6 +15,12 @@ public class DefectData {
     private final LocalDateTime detectTime;
     private final String noticeTarget;
     private final String comments;
+
+    private final int noticeNumber;
+    private final LocalDateTime noticeTime;
+    private final int cancelNumber;
+    private final LocalDateTime cancelTime;
+
     private final String placeComment;
     private final String defectGroup;
 

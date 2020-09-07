@@ -1,9 +1,7 @@
 package com.example.rwbybackend.controllers;
 
 import com.example.rwbybackend.controllers.forms.LoginForm;
-import com.example.rwbybackend.dto.StringData;
-import com.example.rwbybackend.dto.UserData;
-import com.example.rwbybackend.repositories.user.UserRepository;
+import com.example.rwbybackend.dto.UserInfoData;
 import com.example.rwbybackend.services.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +24,14 @@ public class AuthenticationController {
 	private final UserService userService;
 
 	@PostMapping("/login")
-	public ResponseEntity<StringData> login(@RequestBody @Valid LoginForm form) {
+	public ResponseEntity<UserInfoData> login(@RequestBody @Valid LoginForm form) {
 
 		log.info("login {}", form.getUsername());
 
-		StringData token = userService.login(form.getUsername(), form.getPassword());
+		UserInfoData token = userService.login(form.getUsername(), form.getPassword());
 
 		return ResponseEntity.ok(token);
+
+
 	}
 }

@@ -29,6 +29,7 @@ public class Responsible extends ID {
         return String.format("%s %s1. %s1.",
                 lastname, name == null ? "" : name, patronym == null ? "" : patronym);
     }
+
 }
 
 
