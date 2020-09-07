@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,9 +30,6 @@ public class DefectService {
 
     @NonNull
     private final DefectRepository defectRepository;
-
-    @NonNull
-    private final RailRepository railRepository;
 
 
 // Для заполнения ПУ-2б (также и для ПУ-2а):
